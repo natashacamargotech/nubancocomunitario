@@ -1,4 +1,4 @@
-# nubancocomunitario
+# Nubancocomunitario
 Projeto desenvolvido como parte da Imersão Java Script do {Reprograma},desenvolvido com NestJS.
  O sistema permite gerenciar clientes, contas bancárias e gerentes, com funcionalidades para adicionar, remover e modificar contas e clientes.
 
