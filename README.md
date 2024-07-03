@@ -14,3 +14,17 @@ npm install
 
 3. Para iniciar o servidor de desenvolvimento (no terminal):
 npm run start:dev
+
+
+### Desafio semana 3
+Gerente
+Gerente deve ter as seguintes informações:
+*Nome completo
+*Número de identificação (ID)
+*Clientes
+Requisitos de negócio:
+*Criar classes para representar Cliente e Gerente, incluindo os atributos mencionados no diagrama.
+*Implementar métodos nas classes Cliente e Gerente para abrir, fechar e modificar o tipo de conta.
+*Atualizar a classe Conta para manter uma referência ao cliente associado a ela.
+*Implementar métodos na classe Gerente para adicionar e remover clientes, bem como para abrir, fechar e modificar o tipo de conta para um determinado cliente.
+*Organizar a estrutura do projeto de forma apropriada, seguindo as melhores práticas para uma API RESTful.
