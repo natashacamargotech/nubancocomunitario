@@ -2,43 +2,77 @@
 Projeto desenvolvido como parte da Imersão Java Script do {Reprograma},desenvolvido com NestJS.
  O sistema permite gerenciar clientes, contas bancárias e gerentes, com funcionalidades para adicionar, remover e modificar contas e clientes.
 
+ XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+Objetivos de aprendizagem do desafio 🎯
+Explorar práticas recomendadas para criar um design de código claro e eficiente
+Aplicar SOLID, DRY e KISS
+Implementar padrões de código PD_Factory, PD_Adapter, PD_Observer
+Identificar como os padrões de design influenciam a estrutura e organização de um sistema.
+{Reprograma}Bank - melhorando nossa aplicação
+
+Nesta semana, o desafio é refatorar a aplicação desenvolvida anteriormente, aplicando práticas recomendadas para criar um design de código e eficiente. Além disso, serão aplicados os princípios SOLID (Single Responsibility, Open/Closed, Liskov Substitution, Interface Segregation, Dependency Inversion), DRY (Don't Repeat Yourself), KISS (Keep It Simple, Stupid) e alguns padrões de design, como Factory, Adapter e Observer.
+
+Requisitos de negócio:
+Adicionar a capacidade de realizar pagamentos de contas por PIX ou número de boleto.
+O cliente deve possuir saldo em conta ou limite no cheque especial para efetuar a transação.
+Sugestão de Estrutura de Pastas:
+
+reprograma-bank/
+├── src/
+│   ├── controllers/
+│   │   └── xxxController.ts
+│   ├── models/
+│   │   └── xxxModel.ts
+│   ├── routes/
+│   │   └── xxxRoutes.ts
+│   ├── services/
+│   │   └── xxxService.ts
+│   └── index.ts
+├── node_modules/
+├── package.json
+├── tsconfig.json
+└── README.md
+
+Na estrutura sugerida:
+src/controllers/: Contém os controladores para manipular as requisições HTTP, lidando principalmente com a interação entre a API e o modelo de dados.
+src/models/: Armazena os modelos de dados das entidades Cliente, Gerente e Conta, representando a estrutura de dados da aplicação.
+src/routes/: Define as rotas da API para cada entidade, mapeando as solicitações HTTP para as funções correspondentes nos controladores.
+src/services/: Armazena os serviços responsáveis por implementar a lógica de negócios da aplicação, mantendo a separação de responsabilidades e facilitando a reutilização do código.
+src/index.ts: Arquivo principal que inicializa o servidor e conecta-se ao banco de dados, fornecendo a entrada para a aplicação.
+Material
+[Semana 4] - Repositório Github 💻
+Última edição: 9 de jul.
+Material
+[Semana 4] - Gravações 🎥
+1
+
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+ 
 ## Instalação
-
-1. Após o clone, navegue até o diretório do projeto:
-cd nubancocomunitario
-
-2. Instale as dependências:
-npm install
+$ npm install
 
 ## Execução
 
-3. Para iniciar o servidor de desenvolvimento (no terminal):
-npm run start:dev
+$ npm run start
 
 
-### Desafio semana 3
-Objetivos de aprendizagem do desafio 🎯
-Entender como o TypeScript, uma linguagem de programação superset de JavaScript, se integra naturalmente ao ecossistema do Node.js.
-Compreender os princípios e características de uma arquitetura RESTful.
-Identificar os recursos, URIs, métodos HTTP e códigos de status comuns em uma API REST.
-Aprender a projetar e implementar uma API RESTful usando Node.js, seguindo as melhores práticas de REST.
-{Reprograma}Bank
-Disponibilizando nossa API
-Seu desafio é criar uma API RESTful para o sistema bancário desenvolvido na semana 2, agora incluindo a funcionalidade de Gerente de Conta. O Gerente é responsável por gerenciar os clientes e suas contas, podendo abrir, fechar e modificar o tipo de conta.
+$ npm run start:dev
 
-Abaixo estão os requisitos:
-Ao cliente do banco ser adicionadas as seguintes informações:
-Contas
-Gerente
-Gerente deve ter as seguintes informações:
-Nome completo
-Número de identificação (ID)
-Clientes
-Requisitos de negócio:
-Criar classes para representar Cliente e Gerente, incluindo os atributos mencionados no diagrama.
-Implementar métodos nas classes Cliente e Gerente para abrir, fechar e modificar o tipo de conta.
-Atualizar a classe Conta para manter uma referência ao cliente associado a ela.
-Implementar métodos na classe Gerente para adicionar e remover clientes, bem como para abrir, fechar e modificar o tipo de conta para um determinado cliente.
-Organizar a estrutura do projeto de forma apropriada, seguindo as melhores práticas para uma API RESTful.
+## Teste
+# unit tests
+$ npm run test
 
-diagrama_desafio_semanal_s3.png
+# e2e tests
+$ npm run test:e2e
+
+# unit tests
+$ npm run test
+
+# e2e tests
+$ npm run test:e2e
+
+# test coverage
+$ npm run test:cov
+
+
