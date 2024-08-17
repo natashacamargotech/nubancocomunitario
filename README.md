@@ -58,36 +58,3 @@ A arquitetura hexagonal divide a aplicação em três partes principais:
 2. **Domain**: Contém as regras de negócio e a lógica principal da aplicação.
 3. **Infrastructure**: Implementa os adaptadores e interfaces para comunicação com sistemas externos, como bancos de dados, APIs, etc.
 
-- Application
-        * Controllers
-             cliente.controllers.ts
-             account.controller.ts
-        * DTOs
-            account
-                create-account.dto
-                change-account-type.dto
-            manager.dto.ts
-            client.dto.ts
-- Domain
-        * Services
-            account (Depositar | Sacar | Transferir)
-                savings-account.service.ts
-                checking-account.service.ts
-            cliente.service.ts
-            manager.service.ts
-        * Entities (Mapeamento ORM)
-            account
-               account.entity.ts
-               savings-account.entity.ts
-               checking-account.entity.ts
-            client.entity.ts
-            manager.entity.ts
-
-        * Enums
-            client.enum.ts
-            manager.enum.ts
-        * Interfaces
-        * Validators
-- Infrastructure
-    
-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
