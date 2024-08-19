@@ -1,7 +1,7 @@
 import { Repository } from 'typeorm';
 import { InjectRepository } from '@nestjs/typeorm';
-import { IClienteRepository } from '../../../domain/interfaces/cliente.repository.interface';
-import { ClienteEntity } from './domain/entity/clienteEntity.ts';
+import { IClienteRepository } from 'src/domain/repository/clienteRepository';
+import { ClienteEntity } from 'src/domain/entity/clienteEntity';
 
 export class ClienteRepository implements IClienteRepository {
   constructor(
@@ -20,7 +20,10 @@ export class ClienteRepository implements IClienteRepository {
     return this.clienteRepository.save(cliente);
   }
 
-  async update(id: string, cliente: Partial<ClienteEntity>): Promise<ClienteEntity | null> {
+  async update(
+    id: string,
+    cliente: Partial<ClienteEntity>,
+  ): Promise<ClienteEntity | null> {
     return this.clienteRepository.save({ id, ...cliente });
   }
 

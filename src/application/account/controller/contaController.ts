@@ -1,9 +1,17 @@
-import { Controller,Get,Post,Body,Param,NotFoundException,BadRequestException } from '@nestjs/common';
-import { ClienteService } from 'src/domain/service/clienteService'; 
-import { ContaService } from 'src/domain/service/contaService'; 
-import { CreateContaDto } from '../dto/createContaDto'; 
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Param,
+  NotFoundException,
+  BadRequestException,
+} from '@nestjs/common';
+import { ClienteService } from 'src/domain/service/clienteService';
+import { ContaService } from 'src/domain/service/contaService';
+import { CreateContaDto } from '../dto/createContaDto';
 import { ListByIdContaUseCase } from '../usecase/listContaUseCase';
-import { Conta } from 'src/domain/entity/ContaEntity';
+import { ContaEntity } from 'src/domain/entity/ContaEntity';
 
 @Controller('clientes/:id/contas')
 export class ContaController {
@@ -14,7 +22,7 @@ export class ContaController {
   ) {}
 
   @Get()
-  async listarContas(@Param('id') clienteId: string): Promise<Conta[]> {
+  async listarContas(@Param('id') clienteId: string): Promise<ContaEntity[]> {
     const cliente = await this.clienteService.listById(clienteId);
     if (!cliente) {
       throw new NotFoundException('Cliente não encontrado');

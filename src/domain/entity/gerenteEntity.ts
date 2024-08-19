@@ -1,16 +1,16 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
-import { ClienteEntity } from './domain/entity/clienteEntity.ts';
+import { ClienteEntity } from './clienteEntity';
 
 @Entity()
-export class Gerente {
+export class GerenteEntity {
   @PrimaryGeneratedColumn('uuid')
   idGerente: string;
 
   @Column()
   nomeCompleto: string;
 
-  @OneToMany(() => ClienteEntity, (ClienteEntity) => ClienteEntity.gerente)
-  ClienteEntity: ClienteEntity[];
+  @OneToMany(() => ClienteEntity, (cliente) => cliente.gerenteService)
+  clientes: ClienteEntity[];
 
   constructor(nomeCompleto: string) {
     this.nomeCompleto = nomeCompleto;

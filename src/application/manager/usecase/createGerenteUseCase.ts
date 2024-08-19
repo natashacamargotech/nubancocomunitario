@@ -1,17 +1,16 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { GerenteEntity } from 'src/domain/entity/gerenteEntity';
 import { Repository } from 'typeorm';
-import { Gerente } from '../../../domain/entity/gerente.entity';
-import { CreateGerenteDto } from '../dto/create-gerente.dto';
-
+import { CreateGerenteDto } from '../dto/createGerentDto';
 @Injectable()
 export class CreateGerenteUseCase {
   constructor(
-    @InjectRepository(Gerente)
-    private readonly gerenteRepository: Repository<Gerente>,
+    @InjectRepository(GerenteEntity)
+    private readonly gerenteRepository: Repository<GerenteEntity>,
   ) {}
 
-  async execute(createGerenteDto: CreateGerenteDto): Promise<Gerente> {
+  async execute(createGerenteDto: CreateGerenteDto): Promise<GerenteEntity> {
     const { nomeCompleto } = createGerenteDto;
 
     const gerente = this.gerenteRepository.create({ nomeCompleto });

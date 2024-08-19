@@ -1,17 +1,17 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { ClienteEntity } from 'src/domain/entity/clienteEntity';
+import { GerenteEntity } from 'src/domain/entity/gerenteEntity';
 import { Repository } from 'typeorm';
-import { Gerente } from '../../../domain/entity/gerente.entity';
-import { Cliente } from '../../../domain/entity/cliente.entity';
 
 @Injectable()
 export class AddClienteToGerenteUseCase {
   constructor(
-    @InjectRepository(Gerente)
-    private readonly gerenteRepository: Repository<Gerente>,
+    @InjectRepository(GerenteEntity)
+    private readonly gerenteRepository: Repository<GerenteEntity>,
 
-    @InjectRepository(Cliente)
-    private readonly clienteRepository: Repository<Cliente>,
+    @InjectRepository(ClienteEntity)
+    private readonly clienteRepository: Repository<ClienteEntity>,
   ) {}
 
   async execute(gerenteId: string, clienteId: string): Promise<void> {

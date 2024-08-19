@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsString, IsNumber, IsOptional, IsDecimal } from 'class-validator';
+import { IsNotEmpty, IsString, IsOptional, IsDecimal } from 'class-validator';
 
 export class CreateContaDto {
   @IsNotEmpty()
@@ -19,9 +19,9 @@ export class CreateContaDto {
 
   @IsOptional()
   @IsDecimal()
-  limite?:  number | null;
+  limite?: number | null;
 
   @IsOptional()
   @IsDecimal()
-  taxaJuros?:  number | null;
+  taxaJuros?: number | null;
 }

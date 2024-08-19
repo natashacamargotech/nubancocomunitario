@@ -1,17 +1,21 @@
-import { Injectable, NotFoundException, BadRequestException } from '@nestjs/common';
+import {
+  Injectable,
+  NotFoundException,
+  BadRequestException,
+} from '@nestjs/common';
 import { CreateGerenteDto } from 'src/application/manager/dto/createGerentDto';
 import { UpdateGerenteDto } from 'src/application/manager/dto/updateGerenteDto';
 import { CreateContaDto } from 'src/application/account/dto/createContaDto';
-import { GerenteEntity } from './domain/entity/gerenteEntity.ts';
-import { AddClienteToGerenteUseCase } from 'src/application/manager/usecase/addClienteByGerenteUseCase.js'; 
+import { AddClienteToGerenteUseCase } from 'src/application/manager/usecase/addClienteByGerenteUseCase.js';
 import { CreateGerenteUseCase } from 'src/application/manager/usecase/createGerenteUseCase';
-import { DeleteGerenteUseCase } from 'src/application/manager/usecase/deletGerenteUseCase.js'; 
-import { ListByIdGerenteUseCase } from 'src/application/manager/usecase/listIdGerenterUseCase.js'; 
-import { ListGerentesUseCase } from 'src/application/manager/usecase/listGerenteUseCase.js'; 
-import { RemoveClienteFromGerenteUseCase } from 'src/application/manager/usecase/removerClientfromGerenteUseCase.js'; 
+import { DeleteGerenteUseCase } from 'src/application/manager/usecase/deletGerenteUseCase.js';
+import { ListByIdGerenteUseCase } from 'src/application/manager/usecase/listIdGerenterUseCase.js';
+import { ListGerentesUseCase } from 'src/application/manager/usecase/listGerenteUseCase.js';
+import { RemoveClienteFromGerenteUseCase } from 'src/application/manager/usecase/removerClientfromGerenteUseCase.js';
 import { UpdateGerenteUseCase } from 'src/application/manager/usecase/updateGerenteUseCase.js';
-import { ListClienteByIdUseCase } from 'src/application/client/usecase/listIdClienteUseCase.js'; 
-import { ContaService } from './contaService.js'; 
+import { ListClienteByIdUseCase } from 'src/application/client/usecase/listIdClienteUseCase.js';
+import { ContaService } from './contaService.js';
+import { GerenteEntity } from '../entity/gerenteEntity.js';
 
 @Injectable()
 export class GerenteService {
@@ -27,7 +31,9 @@ export class GerenteService {
     private readonly contaService: ContaService,
   ) {}
 
-  async criarGerente(createGerenteDto: CreateGerenteDto): Promise<GerenteEntity> {
+  async criarGerente(
+    createGerenteDto: CreateGerenteDto,
+  ): Promise<GerenteEntity> {
     return this.createGerenteUseCase.execute(createGerenteDto);
   }
 
@@ -113,29 +119,29 @@ export class GerenteService {
         `Gerente com ID ${gerenteId} não encontrado.`,
       );
     }
-  
+
     const cliente = await this.findClienteByIdUseCase.execute(clienteId);
     if (!cliente) {
       throw new NotFoundException(
         `Cliente com ID ${clienteId} não encontrado.`,
       );
     }
-  
+
     if (tipoConta !== 'corrente' && tipoConta !== 'poupanca') {
       throw new BadRequestException(
         `Tipo de conta ${tipoConta} é inválido. Aceita apenas 'corrente' ou 'poupanca'.`,
       );
     }
-  
+
     const createContaDto: CreateContaDto = {
       agencia: '0001',
-      numero: numeroConta, 
+      numero: numeroConta,
       saldo: 0,
       tipoConta,
-      limite: tipoConta === 'corrente' ? 1000 : null, 
-      taxaJuros: tipoConta === 'poupanca' ? 0.5 : null, 
+      limite: tipoConta === 'corrente' ? 1000 : null,
+      taxaJuros: tipoConta === 'poupanca' ? 0.5 : null,
     };
-  
+
     await this.contaService.create(createContaDto);
     console.log(`Conta do cliente ${clienteId} aberta com sucesso.`);
   }

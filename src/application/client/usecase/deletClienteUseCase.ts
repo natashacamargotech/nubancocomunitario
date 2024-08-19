@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { ClienteEntity } from 'src/domain/entity/clienteEntity';
 import { Repository } from 'typeorm';
-import { ClienteEntity } from './domain/entity/clienteEntity.ts';
 
 @Injectable()
 export class DeleteClienteUseCase {

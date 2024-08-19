@@ -1,10 +1,15 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany, ManyToOne } from 'typeorm';
-import { v4 as uuidv4 } from 'uuid';
-import { ContaEntity } from './domain/entity/contaEntity.ts';
-import { GerenteService } from './domain/service/gerenteService.ts';
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  OneToMany,
+  ManyToOne,
+} from 'typeorm';
+import { GerenteService } from '../service/gerenteService';
+import { ContaEntity } from './ContaEntity';
 
 @Entity()
-export class Cliente {
+export class ClienteEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
@@ -24,14 +29,13 @@ export class Cliente {
   @Column()
   telefone: string;
 
-  @OneToMany(() => ContaEntity, ContaEntity => ContaEntity.cliente { 
-    cascade: []  
+  @OneToMany(() => ContaEntity, (conta) => conta.cliente, {
+    cascade: [],
   })
   contasAssociadas: ContaEntity[];
 
-  @ManyToOne(() => GerenteService, (GerenteService) => GerenteService.cliente)
-  GerenteService: GerenteService;
-  
+  @ManyToOne(() => GerenteService, (gerente) => gerente.encontrarGerentePorId)
+  gerenteService: GerenteService;
 
   @Column('decimal')
   rendaSalarial: number;

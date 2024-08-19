@@ -1,10 +1,17 @@
-import { Controller, Get, Post, Param, Body, NotFoundException } from '@nestjs/common';
-import { ClienteService } from 'src/domain/service/clienteService'; 
+import {
+  Controller,
+  Get,
+  Post,
+  Param,
+  Body,
+  NotFoundException,
+  Delete,
+} from '@nestjs/common';
+import { ClienteService } from 'src/domain/service/clienteService';
 import { ContaService } from 'src/domain/service/contaService';
-import { CreateContaDto } from 'src/application/account/dto/createContaDto'; 
-import { ClienteEntity } from './domain/entity/clienteEntity.ts'
+import { CreateContaDto } from 'src/application/account/dto/createContaDto';
 import { CreateClienteDto } from '../dto/creatClienteDto';
-
+import { ClienteEntity } from 'src/domain/entity/clienteEntity';
 
 @Controller('clientes')
 export class ClienteController {
@@ -14,11 +21,12 @@ export class ClienteController {
   ) {}
 
   @Post('criarCliente')
-  async criarCliente(@Body() createClienteDto: CreateClienteDto): Promise<ClienteEntity> {
+  async criarCliente(
+    @Body() createClienteDto: CreateClienteDto,
+  ): Promise<ClienteEntity> {
     const cliente = await this.clienteService.create(createClienteDto);
     return cliente;
   }
-
 
   @Get(':id/contas')
   async listarContas(@Param('id') clienteId: string) {
@@ -33,7 +41,7 @@ export class ClienteController {
   @Post(':id/contas')
   async abrirConta(
     @Param('id') clienteId: string,
-    @Body() createContaDto: CreateContaDto
+    @Body() createContaDto: CreateContaDto,
   ) {
     const conta = await this.contaService.create(createContaDto);
 
@@ -48,7 +56,6 @@ export class ClienteController {
     return conta;
   }
 
-
   @Delete(':id/contas/:numeroConta')
   async fecharConta(
     @Param('id') clienteId: string,
@@ -61,5 +68,4 @@ export class ClienteController {
     await this.contaService.delete(numeroConta);
     return { message: 'Conta fechada com sucesso' };
   }
-
 }

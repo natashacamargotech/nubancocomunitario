@@ -1,17 +1,22 @@
-import { Entity, PrimaryGeneratedColumn, Column, TableInheritance, ManyToOne } from 'typeorm';
-import { ClienteEntity } from './domain/entity/clienteEntity.ts'; 
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  TableInheritance,
+  ManyToOne,
+} from 'typeorm';
+import { ClienteEntity } from './clienteEntity';
 
 @Entity()
 @TableInheritance({ column: { type: 'varchar', name: 'tipoConta' } })
-export class Conta {
+export class ContaEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @ManyToOne(() => ClienteEntity, ClienteEntity => ClienteEntity.contaAssociada { 
-    cascade: ['insert', 'update'] 
+  @ManyToOne(() => ClienteEntity, (cliente) => cliente.contasAssociadas, {
+    cascade: ['insert', 'update'],
   })
-  ClienteEntity: ClienteEntity;
-
+  cliente: ClienteEntity;
 
   @Column()
   agencia: string;
@@ -30,6 +35,4 @@ export class Conta {
 
   @Column({ nullable: true })
   taxaJuros?: number;
-
-
 }

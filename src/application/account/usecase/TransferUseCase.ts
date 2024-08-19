@@ -1,7 +1,11 @@
-import { Injectable, NotFoundException, BadRequestException } from '@nestjs/common';
+import {
+  Injectable,
+  NotFoundException,
+  BadRequestException,
+} from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { ContaEntity } from 'src/domain/entity/ContaEntity';
 import { Repository } from 'typeorm';
-import { ContaEntity } from './domain/entity/contaEntity.ts'
 
 @Injectable()
 export class TransferUseCase {

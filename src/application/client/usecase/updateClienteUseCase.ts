@@ -1,8 +1,8 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { ClienteEntity } from 'src/domain/entity/clienteEntity';
 import { Repository } from 'typeorm';
-import { ClienteEntity } from './domain/entity/clienteEntity.ts';
-import { UpdateClienteDto } from './application/client/dto/updateClienteDto.ts';
+import { UpdateClienteDto } from '../dto/updateClienteDto';
 
 @Injectable()
 export class UpdateClienteUseCase {

@@ -1,7 +1,7 @@
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { ContaEntity } from './domain/entity/contaEntity.ts';
-import { IContaRepository } from 'src/domain/repository/contaRepository.js'; 
+import { IContaRepository } from 'src/domain/repository/contaRepository.js';
+import { ContaEntity } from 'src/domain/entity/ContaEntity';
 
 export class ContaRepository implements IContaRepository {
   constructor(

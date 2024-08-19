@@ -1,17 +1,20 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { Conta } from 'src/domain/entity/ContaEntity'; 
-import { UpdateContaDto } from '../dto/updateContaDto'; 
+import { ContaEntity } from 'src/domain/entity/ContaEntity';
+import { UpdateContaDto } from '../dto/updateContaDto';
 
 @Injectable()
 export class UpdateContaUseCase {
   constructor(
-    @InjectRepository(Conta)
-    private readonly contaRepository: Repository<Conta>,
+    @InjectRepository(ContaEntity)
+    private readonly contaRepository: Repository<ContaEntity>,
   ) {}
 
-  async execute(id: string, updateAccountDto: UpdateContaDto): Promise<Conta> {
+  async execute(
+    id: string,
+    updateAccountDto: UpdateContaDto,
+  ): Promise<ContaEntity> {
     const conta = await this.contaRepository.findOne({ where: { id } });
     if (!conta) {
       throw new NotFoundException(`Conta com ID ${id} não encontrada.`);

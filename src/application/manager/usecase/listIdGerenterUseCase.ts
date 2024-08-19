@@ -1,16 +1,16 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { GerenteEntity } from 'src/domain/entity/gerenteEntity';
 import { Repository } from 'typeorm';
-import { Gerente } from '../../../domain/entity/gerente.entity';
 
 @Injectable()
 export class ListByIdGerenteUseCase {
   constructor(
-    @InjectRepository(Gerente)
-    private readonly gerenteRepository: Repository<Gerente>,
+    @InjectRepository(GerenteEntity)
+    private readonly gerenteRepository: Repository<GerenteEntity>,
   ) {}
 
-  async execute(idGerente: string): Promise<Gerente> {
+  async execute(idGerente: string): Promise<GerenteEntity> {
     const gerente = await this.gerenteRepository.findOne({
       where: { idGerente },
       relations: ['clientes'],

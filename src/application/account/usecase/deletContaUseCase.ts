@@ -1,13 +1,13 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { Conta } from 'src/domain/entity/ContaEntity';
+import { ContaEntity } from 'src/domain/entity/ContaEntity';
 
 @Injectable()
 export class DeleteContaUseCase {
   constructor(
-    @InjectRepository(Conta)
-    private readonly contaRepository: Repository<Conta>,
+    @InjectRepository(ContaEntity)
+    private readonly contaRepository: Repository<ContaEntity>,
   ) {}
 
   async execute(numeroConta: string): Promise<void> {

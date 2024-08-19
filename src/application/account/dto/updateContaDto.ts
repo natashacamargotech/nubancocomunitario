@@ -1,4 +1,4 @@
-import { IsOptional, IsString, IsNumber, IsDecimal } from 'class-validator';
+import { IsOptional, IsString, IsDecimal } from 'class-validator';
 
 export class UpdateContaDto {
   @IsOptional()

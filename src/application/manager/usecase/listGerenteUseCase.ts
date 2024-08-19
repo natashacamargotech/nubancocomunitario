@@ -1,16 +1,16 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { GerenteEntity } from 'src/domain/entity/gerenteEntity';
 import { Repository } from 'typeorm';
-import { Gerente } from '../../../domain/entity/gerente.entity';
 
 @Injectable()
 export class ListGerentesUseCase {
   constructor(
-    @InjectRepository(Gerente)
-    private readonly gerenteRepository: Repository<Gerente>,
+    @InjectRepository(GerenteEntity)
+    private readonly gerenteRepository: Repository<GerenteEntity>,
   ) {}
 
-  async execute(): Promise<Gerente[]> {
+  async execute(): Promise<GerenteEntity[]> {
     return await this.gerenteRepository.find({
       relations: ['clientes'],
     });

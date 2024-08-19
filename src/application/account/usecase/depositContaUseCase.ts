@@ -1,13 +1,13 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { ContaEntity } from 'src/domain/entity/ContaEntity';
 import { Repository } from 'typeorm';
-import { Conta } from 'src/domain/entity/ContaEntity';
 
 @Injectable()
 export class DepositUseCase {
   constructor(
-    @InjectRepository(Conta)
-    private readonly contaRepository: Repository<Conta>,
+    @InjectRepository(ContaEntity)
+    private readonly contaRepository: Repository<ContaEntity>,
   ) {}
 
   async execute(id: string, valor: number): Promise<void> {

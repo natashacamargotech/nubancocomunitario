@@ -1,9 +1,9 @@
 import { Entity } from 'typeorm';
-import { ContaEntity } from './domain/service/contaEntity.ts';
 import { Column } from 'typeorm';
+import { ContaEntity } from './ContaEntity';
 
 @Entity()
-export class ContaPoupanca extends ContaEntity {
+export class ContaPoupancaEntity extends ContaEntity {
   @Column('decimal', { nullable: false })
   taxaJuros: number;
 }

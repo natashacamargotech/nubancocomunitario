@@ -1,4 +1,10 @@
-import { IsString, IsObject, IsOptional, IsDecimal, IsNotEmpty } from 'class-validator';
+import {
+  IsString,
+  IsObject,
+  IsOptional,
+  IsDecimal,
+  IsNotEmpty,
+} from 'class-validator';
 import { Type } from 'class-transformer';
 
 export class CreateClienteDto {
@@ -7,7 +13,7 @@ export class CreateClienteDto {
   nomeCompleto: string;
 
   @IsObject()
-  @Type(() => Object) 
+  @Type(() => Object)
   endereco: {
     rua: string;
     numero: string;
@@ -21,7 +27,7 @@ export class CreateClienteDto {
   @IsString()
   telefone: string;
 
-  @IsOptional() 
+  @IsOptional()
   @IsString()
   gerenteId?: string;
 

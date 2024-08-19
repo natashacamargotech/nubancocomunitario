@@ -1,8 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { ClienteEntity } from './domain/entity/clienteEntity.ts';
-import { CreateClienteDto } from '../dto/creatClienteDto.js'; 
+import { CreateClienteDto } from '../dto/creatClienteDto.js';
+import { ClienteEntity } from 'src/domain/entity/clienteEntity.js';
 
 @Injectable()
 export class CreateClienteUseCase {

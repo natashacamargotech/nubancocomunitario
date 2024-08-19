@@ -1,10 +1,9 @@
-import { ContaEnity } from './domain/entity/contaEntity.ts';
+import { ContaEntity } from '../entity/ContaEntity';
 
 export interface IContaRepository {
-  salvar(conta: ContaEnity): Promise<ContaEnity>;
-  buscarPorNumero(numero: string): Promise<ContaEnity | null>;
-  atualizar(conta: ContaEnity): Promise<ContaEnity>;
+  salvar(conta: ContaEntity): Promise<ContaEntity>;
+  buscarPorNumero(numero: string): Promise<ContaEntity | null>;
+  atualizar(conta: ContaEntity): Promise<ContaEntity>;
   deletar(id: number): Promise<void>;
-  buscarTodos(): Promise<ContaEnity[]>;
-
+  buscarTodos(): Promise<ContaEntity[]>;
 }

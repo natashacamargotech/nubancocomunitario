@@ -1,13 +1,14 @@
-mport { InjectRepository } from '@nestjs/typeorm';
+import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { ClienteEntity } from './domain/entity/clienteEntity.ts';
-import { CreateClienteDto } from 'src/application/client/dto/creatClienteDto.js'; 
+import { CreateClienteDto } from 'src/application/client/dto/creatClienteDto.js';
 import { UpdateClienteDto } from 'src/application/client/dto/updateClienteDto.js';
 import { CreateClienteUseCase } from 'src/application/client/usecase/createClienteUseCase';
-import { UpdateClienteUseCase } from 'src/application/client/usecase/updateClienteUseCase'; 
-import { ListClientesUseCase } from 'src/application/client/usecase/listClienteUseCase'; 
-import { ListClienteByIdUseCase } from 'src/application/client/usecase/listIdClienteUseCase'; 
+import { UpdateClienteUseCase } from 'src/application/client/usecase/updateClienteUseCase';
+import { ListClientesUseCase } from 'src/application/client/usecase/listClienteUseCase';
+import { ListClienteByIdUseCase } from 'src/application/client/usecase/listIdClienteUseCase';
 import { DeleteClienteUseCase } from 'src/application/client/usecase/deletClienteUseCase';
+import { Injectable } from '@nestjs/common';
+import { ClienteEntity } from '../entity/clienteEntity';
 
 @Injectable()
 export class ClienteService {

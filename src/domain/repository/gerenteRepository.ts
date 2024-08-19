@@ -1,4 +1,4 @@
-import { GerenteEntity } from './domain/entity/gerenteEntity.ts';
+import { GerenteEntity } from '../entity/gerenteEntity';
 
 export interface IGerenteRepository {
   findById(id: string): Promise<GerenteEntity | null>;

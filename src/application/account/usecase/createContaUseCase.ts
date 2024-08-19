@@ -1,23 +1,23 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { CreateContaDto } from '../dto/createContaDto'; 
+import { CreateContaDto } from '../dto/createContaDto';
 import { ContaEntity } from 'src/domain/entity/ContaEntity';
-import { ContaCorrente } from 'src/domain/entity/contaCorrente'; 
-import { ContaPoupanca } from 'src/domain/entity/contaPoupanca';
+import { ContaCorrenteEntity } from 'src/domain/entity/contaCorrenteEntity';
+import { ContaPoupancaEntity } from 'src/domain/entity/contaPoupancaEntity';
 
 @Injectable()
 export class CreateContaUseCase {
   constructor(
     @InjectRepository(ContaEntity)
     private contaRepository: Repository<ContaEntity>,
-    @InjectRepository(ContaCorrente)
-    private contaCorrenteRepository: Repository<ContaCorrente>,
-    @InjectRepository(ContaPoupanca)
-    private contaPoupancaRepository: Repository<ContaPoupanca>,
+    @InjectRepository(ContaCorrenteEntity)
+    private contaCorrenteRepository: Repository<ContaCorrenteEntity>,
+    @InjectRepository(ContaPoupancaEntity)
+    private contaPoupancaRepository: Repository<ContaPoupancaEntity>,
   ) {}
 
-  async execute(createContaDto: CreateContaDto): Promise<Conta> {
+  async execute(createContaDto: CreateContaDto): Promise<ContaEntity> {
     let conta;
 
     if (createContaDto.tipoConta === 'corrente') {
